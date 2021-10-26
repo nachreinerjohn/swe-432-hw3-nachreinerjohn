@@ -6,9 +6,9 @@
 
 *Please fill in this information before submission*
 
-* **Student Name:** 
-* **Student G-Number:** 
-* **Heroku Deployment URL:**
+* **Student Name:** John Nachreiner
+* **Student G-Number:** 01116844
+* **Heroku Deployment URL:** https://john-nachreiner-swe432-hw3.herokuapp.com/
 
 ### Documentation of your Web App and React Components
 
