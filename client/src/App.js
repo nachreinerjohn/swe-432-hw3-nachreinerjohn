@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
   // Initialize state
-  state = { cities: [] }
+  constructor(props){
+    super(props);
+
+    this.state = {
+      Items : []
+    }
+  }
 
   // Fetch passwords after first mount
   componentDidMount() {
-    this.getCities();
+    this.getItems();
   }
 
-  getCities() {
-    fetch('/cities')
+  getItems() {
+    fetch('/')
       .then(res => res.json())
-      .then(cities => this.setState({ cities }));
+      .then(Items => this.setState({
+        Items : Items,
+      }));
 }
 
 render() {
-const { cities } = this.state;
+const {items} = this.state;
 
     return (
       <div className="App">
         {/* Render the cities*/}
           <div>
-            <h1>Cities</h1>
-            <ul className="cities">
-              {cities.map((city, index) =>
+            <h1>Items</h1>
+            <ul className="items">
+              {items.map((item, index) =>
                 <li key={index}>
-                  {city}
+                  {item}
                 </li>
               )}
             </ul>
