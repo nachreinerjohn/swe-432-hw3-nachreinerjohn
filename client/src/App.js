@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class App extends React.Component {
+class App extends Component {
   // Initialize state
-  constructor(props){
-    super(props);
-
-    this.state = {
-      Items : []
-    }
-  }
+  state = {items : []}
 
   // Fetch passwords after first mount
   componentDidMount() {
@@ -17,15 +11,16 @@ class App extends React.Component {
   }
 
   getItems() {
-    fetch('/')
+    fetch('/items')
       .then(res => res.json())
-      .then(Items => this.setState({
-        Items : Items,
-      }));
+      .then(items => this.setState({items}))
+      .catch(err => console.log(err))
 }
 
 render() {
-const {items} = this.state;
+this.getItems()
+const { items } = this.state;
+console.log(items)
 
     return (
       <div className="App">
