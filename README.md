@@ -14,17 +14,66 @@
 
 *Here please describe your (at least) 3 different React components as well as the overall purpose of your web application. We provide an example below of what we expect this documentation to look like.*
 
-**General App Description:** This web application provides information about cities loaded from a centralized database at www.citiesinfo.org. This app can help people find reference information about various city attributes such as population, capitals, and other demographic information.
+**General App Description:** This web application provides information about new items in the fortnite marketplace loaded from the fortnite database at fortniteapi.com. This app can help people find data on new items in the marketplace such as names, types, rarites, and descriptions.
 
-* **Endpoint 1:** Retrieve a city from our Washington DC Database
-  * API Endpoint: GET /city/:cityID
-  * Example: GET /city/21
-  * Expected Output: "Fairfax"
+* **Endpoint 1:** Retrieve the list of new item names in the marketplace
+  * API Endpoint: GET /items
+  * Example: GET /items
+  * Expected Output: (a list of new item names from the fortnite marketplace)
 
-* **Component 1:** City List Component
-	* API Endpoint(s):
-  		* GET /cities
-  * Expected display: An html list of the cities contained within the Firebase database.
+* **Endpoint 2:** Retrieve detailed information on each item in the list of new items in the marketplace
+  * API Endpoint: GET /items/detailed
+  * Example: GET /items/detailed
+  * Expected Output: (an array of json objects containing detailed item data for each item)
+  i.e. {
+    "name": "Smallcophagus",
+    "description": "Don't open it. You're not gonna like what you see.",
+    "rarity": "rare",
+    "type": "backpack",
+    "tags": [
+        "Cosmetics.Source.ItemShop",
+        "Cosmetics.Filter.Season.18",
+        "Cosmetics.UserFacingFlags.HasVariants",
+        "Cosmetics.Set.StampArtist"
+    ]
+  }
+
+* **Endpoint 3:** Retrieve detailed information on a specified item in the marketplace
+  * API Endpoint: GET /items/:itemName
+  * Example: GET /items/Smallcophagus
+  * Expected Output: 
+  {
+    "name": "Smallcophagus",
+    "description": "Don't open it. You're not gonna like what you see.",
+    "rarity": "rare",
+    "type": "backpack",
+    "tags": [
+        "Cosmetics.Source.ItemShop",
+        "Cosmetics.Filter.Season.18",
+        "Cosmetics.UserFacingFlags.HasVariants",
+        "Cosmetics.Set.StampArtist"
+    ]
+}
+
+* **Component 1:** App Component
+	* API Endpoint:
+      * GET /items/detailed
+  * Expected display: An html table, made by the List component, of the detailed firebase data, and a list of descriptions mapped by the paragraph component.
+
+* **Component 2:** List Component
+* API Endpoint:
+    * GET /items/detailed
+  * Expected display: A table with The names of each table category and the data for each table element displayed by the Display component
+
+* **Component 3:** Display Component
+* API Endpoint:
+    * GET /items/detailed
+  * Expected display: A table entry in the Display components table, specifying item name, rarity, and type
+
+* **Component 4:** Paragraph Component
+* API Endpoint:
+    * GET /items/detailed
+  * Expected display: A list entry in the App components description list specifying item name and description
 
 ## Project Overview
 
