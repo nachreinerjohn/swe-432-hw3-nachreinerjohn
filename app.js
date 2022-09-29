@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Firebase starter code appears below
 
-let serviceAccount = require('./swe-432-hw3-994e2-firebase-adminsdk-d5gv2-503dce04a7');
+let serviceAccount = require('./test-project-1d026-firebase-adminsdk-pgh03-f66de87d58');
 const { database } = require('firebase-admin');
 admin.initializeApp({
 credential: admin.credential.cert(serviceAccount)
@@ -34,7 +34,9 @@ const getCosmetics = async ()=>{
 
     //convert the incoming data into a smaller set of the information we will use
     for(let item of cosmeticTemp.data.items){
-        const res = storeItemData(item.name, item.description, item.rarity.value, item.type.value, item.gameplayTags);
+      var itemName = item.name;
+      itemName = itemName.replace(/\//g, '');
+        const res = storeItemData(itemName, item.description, item.rarity.value, item.type.value, item.gameplayTags);
     }
   };
 
